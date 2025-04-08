@@ -3,7 +3,7 @@ import sqlite3
 # Classe de conexão com Banco de Dados
 
 class ConexaoBanco:
-    def __init__(self, nome_db = "dados.db"):
+    def __init__(self, nome_db = "dados.db"): # construtor da classe
         self.nome_db = nome_db
         self.conexao = None
         self.cursor = None
@@ -15,7 +15,7 @@ class ConexaoBanco:
             self.conexao = None
             self.cursor = None
 
-    def commitar(self): #  Salva as alterações no banco.
+    def salvar(self): #  Salva as alterações no banco.
         if self.conexao:
             self.conexao.commit()
 
@@ -28,3 +28,44 @@ db.cursor.execute("CREATE TABLE IF NOT EXISTS exemplo (id INTEGER PRIMARY KEY, n
 db.cursor.execute("INSERT INTO exemplo (nome) VALUES (?)", ("Teste",))
 db.commitar()
 db.fechar()"""
+
+
+class Cliente:
+    def __init__(self, nome_db = "dados.db"):
+        # cria uma instância  da ConexaoBanco
+        self.banco = ConexaoBanco(nome_db)
+        self.cursor = self.banco.cursor 
+
+        self.criar_tabela() # se não existir
+
+    def criar_tabela(self):
+        self.cursor.execute("""
+                            CREATE TABLE IF NOT EXISTS usuarios(
+                            id INTERGER PRIMARY KEY AUTOINCREMENT, 
+                            nome TEXT NOT NULL,
+                            email TEXT NOT NULL,
+                            senha TEXT NOT NULL)
+                            """)
+        self.banco.salvar()
+    
+    def cadastrar_cliente(self, nome, email, senha): # espera-se receber: nome, email, senha
+        try:
+            self.cursor.execute("""
+                                INSERT INTO usuarios (nome, email, senha)
+                                VALUES (?, ?, ?)
+                                """, (nome, email, senha))
+            self.banco.salvar()
+            print("Cliente cadastrado com sucesso.")
+        except sqlite3.IntegrityError:
+            print("Este cliente já está cadastrado")
+        except Exception as e:
+            print("Erro ao cadastrar o cliente:", e)
+    
+    def listar_cliente(self):
+        self.cursor.execute("SELECT id, nome, email FROM usuarios")
+        usuarios = self.cursor.fetchall()
+        for usuario in usuarios: 
+            print(usuario)
+
+    def __del__(self):
+        self.banco.fechar()
