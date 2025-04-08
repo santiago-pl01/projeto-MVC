@@ -12,3 +12,13 @@ meu_projeto/<br>
 |-- requirements.txt (dependências do projeto)<br>
 |-- README.md (documentação sobre o projeto)<br>
 
+##
+🧠 Resumo prático:
+
+| Parte       | Responsabilidade              | Local comum         |
+|-------------|-------------------------------|---------------------|
+| Model       | Dados, regras de negócio      | models.py           |
+| View        | Interface visual (HTML/CSS)   | Pasta templates/    |
+| Controller  | Lógica das rotas e respostas  | app.py ou routes.py |
+
+
