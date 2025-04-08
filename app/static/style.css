@@ -1,0 +1,43 @@
+body{
+    background-color: rgb(128, 105, 58);
+
+}
+.cadastrar-usuario{
+    color: brown;
+    font-size: 50px;
+    text-align: left;
+}
+.titulo-padrao {
+    font-size: 50px;
+    background-color: cornflowerblue;
+    padding: 20px 0;
+    color:black ;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.cliente{
+    padding: 40px;
+    font-size: 20px;
+    color: plum;
+}
+.produto{
+    padding: 40px;
+    font-size: 20px;
+    color: blue ;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse; 
+    margin-top: 20px; 
+}
+th, td { 
+    border: 1px solid #ddd; 
+    padding: 10px; 
+    text-align: left;
+}
+th { 
+    background-color: #f4f4f4; 
+}
