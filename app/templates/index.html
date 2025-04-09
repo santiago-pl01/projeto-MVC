@@ -5,14 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-
     
-
 </head>
 <body>
     <h1 class="titulo-padrao">cadastro</h1>
-    <button style="width: 150px; height: 50px;">cadastro</button> <br>
-    <button  style="width: 150px; height: 50px;">login</button>
+
+   <div class="center">
+    <a href="{{ url_for('app.homepage') }}" class="botao">Clique aqui</a>
+
+   </div>
+
+  
 
 </body>
 </html>
