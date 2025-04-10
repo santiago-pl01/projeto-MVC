@@ -10,6 +10,16 @@ def home():
 @app.route('/pagina2')
 def homepage():
     return render_template('pagina2.html')
+    
+@app.route('/cadastro', methods=['GET', 'POST'])
 
-#ao apertar o botão cadastrar em HTML, o views serve como uma rota, ele vai direcionar a acão cadastrar as regras de negocio como ver se os campos
-#verificar os dados, se eles estão corretos
+def cadastro():
+    if request.method == 'POST':
+        nome = request.form.get('nome')
+        email = request.form.get('email')
+        senha = request.form.get('senha')
+
+        mensagem = cadastrar_usuario(nome, email, senha)
+        return render_template ('cadastro.html',mensagem=mensagem)
+    
+    return render_template('cadastro.html')
