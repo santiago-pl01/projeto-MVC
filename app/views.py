@@ -1,19 +1,14 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template,request
+from controlles import cadastrar_usuario
 
 app= Blueprint('app', __name__)
 
 @app.route('/')
-#usar este  para referenciar
 def home():
     return render_template('index.html')
-
-@app.route('/pagina2')
-def homepage():
-    return render_template('pagina2.html')
     
 @app.route('/cadastro', methods=['GET', 'POST'])
-
-def cadastro():
+def homepage():
     if request.method == 'POST':
         nome = request.form.get('nome')
         email = request.form.get('email')
