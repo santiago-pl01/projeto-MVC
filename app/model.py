@@ -17,7 +17,7 @@ class ConexaoBanco:
             self.conexao.commit()
     
     def fechar(self): # Fecha a conexão
-        if self.conexao:
+        if self.conexao: 
             self.conexao.close()
             self.conexao = None
             self.cursor = None
