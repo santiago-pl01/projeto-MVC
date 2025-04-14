@@ -8,9 +8,13 @@ produto_model = Produto()
 #------------------------------------------------
 
 def cadastrar_usuario(nome, email, senha):
+
     if not nome or not email or not senha:
         return "Preencha todos os campos"
-    
+
+    if cliente_model.existe("email", email):
+        return "Ja existe um usuario com esse e-mail"
+
     cliente_model.cadastrar_cliente(nome, email, senha)
     return "Usuário cadrastrado com sucesso!"
 
