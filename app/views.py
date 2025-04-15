@@ -6,7 +6,9 @@ app= Blueprint('app', __name__)
 @app.route('/')
 def home():
     return render_template('index.html')
-    
+
+
+# rota do cadastro
 @app.route('/cadastro', methods=['GET', 'POST'])
 def homepage():
     if request.method == 'POST':
