@@ -2,20 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Bem-vindo</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    
 </head>
 <body>
-    <h1 class="titulo-padrao">cadastro</h1>
+    
+    <div class="card">
+        <h1 class="titulo-padrao">Sistema de Cadastro</h1>
 
-   <div class="center">
-    <a href="{{ url_for('app.homepage') }}" class="botao">Clique aqui</a>
+        <p class="subtitulo">Escolha uma das opções abaixo para continuar:</p>
 
-   </div>
-
-  
+        <div class="botoes-home">
+            <a href="{{ url_for('app.homepage') }}" class="botao">Cadastro de Usuário</a>
+            <a href="#" class="botao">Cadastro de Produto</a> 
+        </div>
+    </div>
 
 </body>
 </html>
+
