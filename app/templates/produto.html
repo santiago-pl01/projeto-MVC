@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1 class="cadastrar-produto">Cadastro de Produto</h1>
+    <button onclick="adicionar_produto()">adicionar produto</button>
+    <input type="text", id="adicionar produto", placeholder="Nome do produto">
+    <input type="number", id="Preço", placeholder="Preço">
+    
+
+    <h2>LISTAS DE PRODUTO</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome do produto</th>
+                <th>preço</th>
+                <th>alterações</th>
+            </tr>
+        </thead>
+        <tbody id="listaUsuarios">
+            <tr>
+                <td></td> 
+                <td></td>
+                <td>
+                    <button onclick="Editar()">Editar</button>
+                    <button onclick="Excluir()">Excluir</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+
+   
+</body>
+</html>
