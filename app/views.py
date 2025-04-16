@@ -20,3 +20,7 @@ def homepage():
         return render_template ('cadastro.html',mensagem=mensagem)
     
     return render_template('cadastro.html')
+
+@app.route('/produto')
+def page():
+    return render_template('produto.html')
