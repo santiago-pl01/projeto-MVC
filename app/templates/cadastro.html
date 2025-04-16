@@ -1,32 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Cadastro de Usuário</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1 class="cadastrar-usuario">cadastro</h1>
-    <button onclick="adicionar_usuario()">adicionar usuario</button>
-    <input type="text", id="adicionar cliente", placeholder="Nome">
-    <input type="email", id=" email", placeholder="E-mail">
-    
 
-    <h2>LISTAS DE USUARIOS</h2>
+    <h1>Cadastro de Usuário</h1>
+
+    {% if mensagem %}
+        <p style="text-align:center; color: green;">{{ mensagem }}</p>
+    {% endif %}
+
+    <form method="POST" style="text-align:center;">
+        <input type="text" name="nome" placeholder="Nome" required>
+        <input type="email" name="email" placeholder="E-mail" required>
+        <input type="password" name="senha" placeholder="Senha" required>
+        <button type="submit">Cadastrar Usuário</button>
+    </form>
+
+    <h2>Lista de Usuários</h2>
     <table>
         <thead>
             <tr>
                 <th>Nome</th>
                 <th>E-mail</th>
-                <th>alterações</th>
+                <th>Ações</th>
             </tr>
         </thead>
-        <tbody id="listaUsuarios"></tbody>
+        <tbody id="listaUsuarios">
+        </tbody>
     </table>
-    
 
-   
 </body>
 </html>
