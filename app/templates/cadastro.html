@@ -6,8 +6,9 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    <div class="card">
 
-    <h1>Cadastro de Usuário</h1>
+            <h1>Cadastro de Usuário</h1>
 
     {% if mensagem %}
         <p style="text-align:center; color: green;">{{ mensagem }}</p>
@@ -29,7 +30,15 @@
                 <th>Ações</th>
             </tr>
         </thead>
-        <tbody id="listaUsuarios">
+        <tbody id="listaProduto">
+            <tr>
+                <td></td> 
+                <td></td>
+                <td>
+                    <button onclick="Editar()">Editar</button>
+                    <button onclick="Excluir()">Excluir</button>
+                </td>
+            </tr>
         </tbody>
     </table>
 

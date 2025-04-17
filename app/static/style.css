@@ -8,8 +8,8 @@
 
 body {
     font-family: sans-serif;
-    background: linear-gradient(to right, #f9f9f9, #e6f0ff);
-    color: #2c3e50;
+    background: #2819b3;
+    background: linear-gradient(90deg, rgba(40, 25, 179, 1) 0%, rgba(74, 69, 105, 1) 43%, rgba(61, 56, 107, 1) 80%);    color: #2c3e50;
     padding: 40px 20px;
     text-align: center;
 }
@@ -21,7 +21,7 @@ h1, h2 {
     margin-bottom: 20px;
 }
 .card {
-    max-width: 500px;
+    max-width: 800px;
     margin: 100px auto;
     padding: 50px 40px;
     background-color: white;
@@ -87,7 +87,7 @@ table {
     max-width: 800px;
     margin: 30px auto;
     border-collapse: collapse;
-    background-color: rgb(71, 63, 63);
+    background-color: rgb(157, 211, 248);
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
