@@ -17,8 +17,12 @@
     <form method="POST" style="text-align:center;">
         <input type="text" name="nome" placeholder="Nome" required>
         <input type="email" name="email" placeholder="E-mail" required>
-        <input type="password" name="senha" placeholder="Senha" required>
+        <div class="senha-container">
+            <input type="password" name="senha" id="senha" placeholder="Senha" required>
+            <span class="toggle-senha" onclick="toggleSenha()">👁️</span>
+        </div>
         <button type="submit">Cadastrar Usuário</button>
+        
     </form>
 
     <h2>Lista de Usuários</h2>
@@ -41,6 +45,14 @@
             </tr>
         </tbody>
     </table>
-
+    
+    <script>
+        function toggleSenha() {
+            const senhaInput = document.getElementById("senha");
+            const tipoAtual = senhaInput.getAttribute("type");
+            senhaInput.setAttribute("type", tipoAtual === "password" ? "text" : "password");
+        }
+    </script>
+    
 </body>
 </html>

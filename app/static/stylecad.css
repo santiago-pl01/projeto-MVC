@@ -67,7 +67,6 @@ button:hover {
 
 input[type="text"],
 input[type="email"],
-input[type="password"],
 input[type="date"],
 input[type="number"] {
     padding: 10px;
@@ -119,4 +118,31 @@ thead tr {
 
 tbody {
     border: 2px solid black;
+}
+
+.senha-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin: 10px auto;
+}
+
+.senha-container input {
+    width: 100%;
+    padding: 12px 40px 12px 12px; 
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.toggle-senha {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 20px;
+    color: #666;
+    user-select: none;
+    line-height: 1;
 }
