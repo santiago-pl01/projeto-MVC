@@ -1,38 +1,42 @@
-from model import Cliente, Produto
+from model import Cliente, Produto  # importa as classes
 
+# cria instâncias para usar funções do model
 cliente_model = Cliente()
 produto_model = Produto()
 
 #------------------------------------------------
-#FUNCOES CLIENTE
+# FUNÇÕES CLIENTE
 #------------------------------------------------
 
-def cadastrar_usuario(nome, email, senha):
-
+def cadastrar_usuario(nome, email, senha): 
     if not nome or not email or not senha:
         return "Preencha todos os campos"
+    cliente_model.cadastrar(nome=nome, email=email, senha=senha)
+    return "Usuário cadastrado com sucesso!"
 
-    if cliente_model.existe("email", email):
-        return "Ja existe um usuario com esse e-mail"
-
-    cliente_model.cadastrar_cliente(nome, email, senha)
-    return "Usuário cadrastrado com sucesso!"
-
-def listar_usuarios():
-    return cliente_model.listar_cliente()
+def listar_cliente():
+    return cliente_model.listar()
 
 def editar_usuario(id, nome, email, senha):
     if not nome or not email or not senha:
         return "Preencha todos os campos."
+    
+    if not cliente_model.existe( id):
+        return "usuario nao encontrado"
+
+
     cliente_model.editar(id, nome=nome, email=email, senha=senha)
     return "Usuário editado com sucesso!"
 
 def deletar_usuario(id):
+    if not cliente_model.existe(id):
+        return"usuario nao encontrado"
+    
     cliente_model.deletar(id)
     return "Usuário deletado com sucesso!"
 
 #------------------------------------------------------
-#                  FUNCOES PRODUTO
+# FUNÇÕES PRODUTO
 #------------------------------------------------------
 
 def cadastrar_produto(nome, marca, data, quantidade):
@@ -47,10 +51,17 @@ def listar_produto():
 def editar_produto(id, nome, marca, data, quantidade):
     if not nome or not marca or not data or not quantidade:
         return "Preencha todos os campos para editar."
+
+    if not produto_model.existe( id):
+        return "produto nao encontrado"
+    
     produto_model.editar(id, nome=nome, marca=marca, data=data, quantidade=quantidade)
     return "Produto editado com sucesso!"
 
 def deletar_produto(id):
+    if not produto_model.existe( id):
+        return "produto nao encontrado"
+
     produto_model.deletar(id)
     return "Produto deletado com sucesso!"
-    
+
