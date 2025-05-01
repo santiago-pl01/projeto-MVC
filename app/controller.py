@@ -8,7 +8,7 @@ produto_model = Produto()
 # FUNÇÕES CLIENTE
 #------------------------------------------------
 
-def cadastrar_usuario(nome, email, senha):
+def cadastrar_usuario(nome, email, senha): 
     if not nome or not email or not senha:
         return "Preencha todos os campos"
     cliente_model.cadastrar(nome=nome, email=email, senha=senha)
@@ -68,7 +68,6 @@ def deletar_produto(id):
 #------------------------------------------------------
 # TESTE
 #------------------------------------------------------
-
 if __name__ == "__main__":
    '''print("📌 Testando cadastro de usuário:")
     msg = cadastrar_usuario("maria", "maria@email.com", "0987")
