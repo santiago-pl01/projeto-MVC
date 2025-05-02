@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template,request
-from controlles import cadastrar_usuario
+from controller import cadastrar_usuario
 
 app= Blueprint('app', __name__)
 
