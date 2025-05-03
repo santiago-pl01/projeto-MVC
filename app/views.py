@@ -21,6 +21,16 @@ def homepage():
     
     return render_template('cadastro.html')
 
-@app.route('/produto')
+
+@app.route('/produto', methods=['GET', 'POST'])
 def page():
+    if request.method == 'POST':
+        nome = request.form.get('nome')
+        marca = request.form.get('marca')
+        data = request.form.get('data')
+        quantidade = request.form.get('quantidade')
+
+        mensagem = cadastrar_produto(nome, marca, data, quantidade)
+        return render_template('produto.html', mensagem=mensagem)
+
     return render_template('produto.html')

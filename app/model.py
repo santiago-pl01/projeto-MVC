@@ -194,7 +194,7 @@ class Cliente(TabelaBase):
         campos = {
             "nome": "TEXT NOT NULL",
             "email": "TEXT NOT NULL UNIQUE",
-            "senha": "TEXT NOT NULL"
+            "senha": "TEXT NOT NULL UNIQUE"
         }
         super().__init__(nome_db, "usuarios", campos)
 
@@ -216,6 +216,7 @@ class Produto(TabelaBase):
             "nome": "TEXT NOT NULL",
             "marca": "TEXT NOT NULL",
             "data": "INTEGER NOT NULL",
-            "quantidade": "INTEGER NOT NULL"
+            "quantidade": "INTEGER NOT NULL",
+            "preço": "INTEGER NOT NULL"
         }
         super().__init__(nome_db, "produtos", campos)
