@@ -65,12 +65,3 @@ def deletar_produto(id):
     produto_model.deletar(id)
     return "Produto deletado com sucesso!"
 
-if __name__ == "__main__":
-
-    # Teste rápido
-    print("Cadastrando produto...")
-    msg = cadastrar_produto("Caderno", "Tilibra", "2025-04-10", 50)
-    print(msg)
-
-    print("\nLista de produtos:")
-    print(listar_produto)
