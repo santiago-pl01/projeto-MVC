@@ -22,7 +22,6 @@ class ConexaoBanco:
         Estabelece a conexão com o banco de dados e cria o cursor.
         """
         self.conexao = sqlite3.connect(self.nome_db)
-        #self.conexao = 9
         self.cursor = self.conexao.cursor()
 
     def commit(self):
