@@ -21,7 +21,8 @@ class ConexaoBanco:
         """
         Estabelece a conexão com o banco de dados e cria o cursor.
         """
-        self.conexao = sqlite3.connect(self.nome_db)
+        #self.conexao = sqlite3.connect(self.nome_db)
+        self.conexao = sqlite3.connect(self.nome_db, check_same_thread=False)
         self.cursor = self.conexao.cursor()
 
     def commit(self):
@@ -109,15 +110,26 @@ class TabelaBase:
         """
         Lista todos os registros da tabela no console.
         """
+        #self.cursor.execute(f"SELECT * FROM {self.nome_tabela}")
+        #registros = self.cursor.fetchall()
+        #if not registros:
+        #    print(f"Nenhum {self.nome_tabela} cadastrado.")
+        #    return 
+        #for linha in registros:
+         #   print(" | ".join([f"{campo}: {valor}" for campo, valor in zip(['id'] + list(self.campos.keys()), linha)]))
+
         self.cursor.execute(f"SELECT * FROM {self.nome_tabela}")
         registros = self.cursor.fetchall()
-        if not registros:
-            print(f"Nenhum {self.nome_tabela} cadastrado.")
-            return
+        lista = []
         for linha in registros:
-            print(" | ".join([f"{campo}: {valor}" for campo, valor in zip(['id'] + list(self.campos.keys()), linha)]))
+          registro = {'id': linha[0]}
+        for i, campo in enumerate(self.campos.keys(), start=1):
+            registro[campo] = linha[i]
+        lista.append(registro)
+        return lista
 
-    def existe(self, id_):
+
+    def existe(self, id_,):
         """
         Verifica se um registro com o ID informado existe na tabela.
 
