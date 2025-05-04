@@ -7,40 +7,48 @@
 </head>
 <body>
     <div class="card">
+        <h1>Cadastro de Usuário</h1>
 
-            <h1>Cadastro de Usuário</h1>
+        {% if mensagem %}
+            <p style="text-align:center; color: green;">{{ mensagem }}</p>
+        {% endif %}
 
-    {% if mensagem %}
-        <p style="text-align:center; color: green;">{{ mensagem }}</p>
-    {% endif %}
+        <form method="POST" style="text-align:center;">
+            {% if cliente_dados %}
+                <input type="hidden" name="id" value="{{ cliente_dados.id }}">
+            {% endif %}
+            <input type="text" name="nome" placeholder="Nome" value="{{ cliente_dados.nome if cliente_dados else '' }}" required>
+            <input type="email" name="email" placeholder="E-mail" value="{{ cliente_dados.email if cliente_dados else '' }}" required>
+            <input type="password" name="senha" placeholder="Senha" {% if cliente_dados %}disabled{% endif %} required>
+            <button type="submit">{{ 'Atualizar' if cliente_dados else 'Cadastrar Usuário' }}</button>
+        </form>
 
-    <form method="POST" style="text-align:center;">
-        <input type="text" name="nome" placeholder="Nome" required>
-        <input type="email" name="email" placeholder="E-mail" required>
-        <input type="password" name="senha" placeholder="Senha" required>
-        <button type="submit">Cadastrar Usuário</button>
-    </form>
-
-    <h2>Lista de Usuários</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>E-mail</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody id="listaProduto">
-            <tr>
-                <td></td> 
-                <td></td>
-                <td>
-                    <button onclick="Editar()">Editar</button>
-                    <button onclick="Excluir()">Excluir</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
+        <h2>Lista de Usuários</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="listaProduto">
+                {% for cliente in clientes %}
+                <tr>
+                    <td>{{ cliente.nome }}</td>
+                    <td>{{ cliente.email }}</td>
+                    <td>
+                        <a href="{{ url_for('app.cadastro', id=cliente.id) }}">Editar</a>
+                        <a href="{{ url_for('app.excluir_cliente', id=cliente.id) }}" onclick="return confirm('Tem certeza que deseja excluir este cliente?');">Excluir</a>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="3">Nenhum usuário cadastrado.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
