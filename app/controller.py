@@ -64,4 +64,3 @@ def deletar_produto(id):
 
     produto_model.deletar(id)
     return "Produto deletado com sucesso!"
-
