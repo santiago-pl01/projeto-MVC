@@ -34,15 +34,15 @@ def cadastro_produto():
         nome = request.form.get('nome')
         marca = request.form.get('marca')
         data = request.form.get('data')
-        quantidade = request.form.get('quantidade')
-        preco= request.form.get('preco')
+        quantidade =int(request.form.get('quantidade'))
+        preco= int(request.form.get('preco'))
 
         mensagem = controller.cadastrar_produto(nome, marca, data, quantidade,preco)
         return render_template('produto.html', mensagem=mensagem)
 
     return render_template('produto.html')
 
-@app.route('/editar/<int:id>', methods=['GET','POST'])
+@app.route('/editar_usuario/<int:id>', methods=['GET','POST'])
 def editar_usuario():
 
     if request.method == 'POST':
@@ -53,18 +53,20 @@ def editar_usuario():
         mensagem = controller.cadastrar_usuario(nome, email, senha)
         return render_template ('cadastro.html',mensagem=mensagem)
     
-    return render_template('cadastro.html')
-
-@app.route('/excluir/<int:id>', methods=['GET'])
+    return render_template, ('cadastro.html')
+#excluir usuario
+@app.route('/excluir_usuario/<int:id>', methods=['GET'])
 def excluir_usuario(id):
     controller.deletar_usuario(id)
     return render_template('cadastro.html')
 
+#xcluir produto
 @app.route('/excluir/<int:id>', methods=['GET'])
 def excluir_produto(id):
     controller.deletar_produto(id)
     return render_template('produto.html')
 
+#editar produto
 @app.route('/editar/<int:id>', methods=['GET', 'POST'])
 def editar_produto():
 
@@ -72,8 +74,8 @@ def editar_produto():
         nome = request.form.get('nome')
         marca = request.form.get('marca')
         data = request.form.get('data')
-        quantidade = request.form.get('quantidade')
-        preco= request.form.get('preco')
+        quantidade =int(request.form.get('quantidade'))
+        preco= int(request.form.get('preco'))
 
         mensagem = controller.cadastrar_produto(nome, marca, data, quantidade,preco)
         return render_template('produto.html', mensagem=mensagem)
