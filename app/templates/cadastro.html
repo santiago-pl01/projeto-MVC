@@ -6,9 +6,11 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='stylecad.css') }}">
 </head>
 <body>
+    
     <div class="card">
-
+         <button onclick="window.history.back()" class="botao" style="margin-top: 20px;">Voltar</button>
             <h1>Cadastro de Usuário</h1>
+            
 
     {% if mensagem %}
         <p style="text-align:center; color: green;">{{ mensagem }}</p>
