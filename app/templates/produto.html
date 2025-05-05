@@ -11,33 +11,33 @@
     <div class="card">
         <h1 class="titulo-padrao">Cadastro de produto</h1>
 
-    <button onclick="adicionar_produto()">adicionar produto</button>
-    <input type="text", id="adicionar produto", placeholder="Nome do produto">
-    <input type="number", id="Preço", placeholder="Preço">
-    
+        <input type="text" id="adicionar produto" placeholder="Nome do produto">
+        <input type="text" id="Marca" placeholder="Marca">
+        <input type="number" id="Quantidade" placeholder="Quantidade" min="0">
+        <input type="text" id="Validade" placeholder="Validade do produto" onfocus="(this.type='date')" onblur="(this.type='text')">
+        <input type="text" id="Preço" placeholder="Preço" min="0 step="0.01"" oninput="if(this.value < 0) this.value = 0">
+        <button onclick="adicionar_produto()">adicionar produto</button>
 
-    <h2>LISTAS DE PRODUTO</h2>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Nome do produto</th>
-                <th>preço</th>
-                <th>alterações</th>
-            </tr>
-        </thead>
-        <tbody id="listaUsuarios">
-            <tr>
-                <td></td> 
-                <td></td>
-                <td>
-                    <button onclick="Editar()">Editar</button>
-                    <button onclick="Excluir()">Excluir</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    
-
-   
+        <h2>LISTAS DE PRODUTO</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Nome do produto</th>
+                    <th>preço</th>
+                    <th>alterações</th>
+                </tr>
+            </thead>
+            <tbody id="listaUsuarios">
+                <tr>
+                    <td></td> 
+                    <td></td>
+                    <td>
+                        <button onclick="Editar()">Editar</button>
+                        <button onclick="Excluir()">Excluir</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
