@@ -218,6 +218,6 @@ class Produto(TabelaBase):
             "marca": "TEXT NOT NULL",
             "data": "INTEGER NOT NULL",
             "quantidade": "INTEGER NOT NULL",
-            "preço": "INTEGER NOT NULL"
+            "preco": "INTEGER NOT NULL"
         }
         super().__init__(nome_db, "produtos", campos)
