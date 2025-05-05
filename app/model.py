@@ -113,11 +113,12 @@ class TabelaBase:
         registros = self.cursor.fetchall()
         if not registros:
             print(f"Nenhum {self.nome_tabela} cadastrado.")
-            return
+            return 
         for linha in registros:
-            print(" | ".join([f"{campo}: {valor}" for campo, valor in zip(['id'] + list(self.campos.keys()), linha)]))
+           print(" | ".join([f"{campo}: {valor}" for campo, valor in zip(['id'] + list(self.campos.keys()), linha)]))
 
-    def existe(self, id_):
+
+    def existe(self, id_,):
         """
         Verifica se um registro com o ID informado existe na tabela.
 
@@ -194,7 +195,7 @@ class Cliente(TabelaBase):
         campos = {
             "nome": "TEXT NOT NULL",
             "email": "TEXT NOT NULL UNIQUE",
-            "senha": "TEXT NOT NULL"
+            "senha": "TEXT NOT NULL UNIQUE"
         }
         super().__init__(nome_db, "usuarios", campos)
 
@@ -216,6 +217,7 @@ class Produto(TabelaBase):
             "nome": "TEXT NOT NULL",
             "marca": "TEXT NOT NULL",
             "data": "INTEGER NOT NULL",
-            "quantidade": "INTEGER NOT NULL"
+            "quantidade": "INTEGER NOT NULL",
+            "preço": "INTEGER NOT NULL"
         }
         super().__init__(nome_db, "produtos", campos)
