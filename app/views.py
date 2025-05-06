@@ -59,6 +59,7 @@ def editar_usuario():
         listar_usuario= controller.listar_cliente
         return render_template ('cadastro.html',mensagem=mensagem, usuarios= listar_usuario)
     
+    listar_usuario= controller.listar_produto()
     return render_template, ('cadastro.html')
 
 '''#listar usuario
