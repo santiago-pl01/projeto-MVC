@@ -28,6 +28,7 @@ h1, h2 {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     text-align: center;
     backdrop-filter: blur(6px);
+    position: relative;
 }
 
 .titulo-padrao {
@@ -120,4 +121,19 @@ thead tr {
 
 tbody {
     border: 2px solid black;
+}
+form {
+    margin-bottom: 30px;
+}
+
+input[type="date"] {
+    /* Estilo especial para campos de data */
+    appearance: none;
+    -webkit-appearance: none;
+    min-height: 38px;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
