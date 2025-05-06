@@ -39,23 +39,24 @@ def deletar_usuario(id):
 # FUNÇÕES PRODUTO
 #------------------------------------------------------
 
-def cadastrar_produto(nome, marca, data, quantidade, preco):
-    if not nome or not marca or not data or not quantidade or not preco:
+def cadastrar_produto(nome, marca, data, quantidade,preco):
+    if not nome or not marca or not data or not quantidade:
         return "Preencha todos os campos do produto"
-    produto_model.cadastrar(nome=nome, marca=marca, data=data, quantidade=quantidade, preco=preco)
+    else: produto_model.cadastrar(nome=nome, marca=marca, data=data, quantidade=quantidade, preco=preco)
+
     return "Produto cadastrado com sucesso!"
 
 def listar_produto():
     return produto_model.listar()
 
-def editar_produto(id, nome, marca, data, quantidade):
+def editar_produto(id, nome, marca, data, quantidade, preco):
     if not nome or not marca or not data or not quantidade:
         return "Preencha todos os campos para editar."
 
     if not produto_model.existe( id):
         return "produto nao encontrado"
     
-    produto_model.editar(id, nome=nome, marca=marca, data=data, quantidade=quantidade)
+    produto_model.editar(id, nome=nome, marca=marca, data=data, quantidade=quantidade, preço=preco)
     return "Produto editado com sucesso!"
 
 def deletar_produto(id):

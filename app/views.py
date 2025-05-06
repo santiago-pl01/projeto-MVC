@@ -30,17 +30,17 @@ def cadastro_cliente():
 
 #editar usuario
 @app.route('/editar_usuario/<int:id>', methods=['GET','POST'])
-def editar_usuario():
+def editar_usuario(id):
 
     if request.method == 'POST':
         nome = request.form.get('nome')
         email = request.form.get('email')
         senha = request.form.get('senha')
 
-        mensagem = controller.cadastrar_usuario(nome, email, senha)
+        mensagem = controller.editar_usuario(id,nome, email, senha)
         return render_template ('cadastro.html',mensagem=mensagem)
     
-    return render_template, ('cadastro.html')
+    return render_template('cadastro.html')
 
 
 
@@ -52,7 +52,7 @@ def excluir_usuario(id):
 
 
 #listar usuario
-@app.route('/listar_cliente/<int:id>', methods=['GET', 'POST'])
+@app.route('/listar_cliente', methods=['GET', 'POST'])
 def listar_cliente():
     lista_de_cliente = controller.listar_cliente()
     return render_template('cadastro.html', produto = lista_de_cliente)
@@ -79,10 +79,10 @@ def cadastro_produto():
     return render_template('produto.html')
 
 #listar produto
-@app.route('/listar_produto/<int:id>', methods=['GET', 'POST'])
+@app.route('/listar_produto', methods=['GET', 'POST'])
 def listar_produto():
     lista_de_produto = controller.listar_produto()
-    return render_template('produto.html', lista = lista_de_produto)
+    return render_template('produto.html', produtos = lista_de_produto)
 
 #xcluir produto
 @app.route('/excluir/<int:id>', methods=['GET'])
@@ -92,7 +92,7 @@ def excluir_produto(id):
 
 #editar produto
 @app.route('/editar/<int:id>', methods=['GET', 'POST'])
-def editar_produto():
+def editar_produto(id):
 
     if request.method == 'POST':
         nome = request.form.get('nome')
@@ -101,7 +101,7 @@ def editar_produto():
         quantidade =int(request.form.get('quantidade'))
         preco= int(request.form.get('preco'))
 
-        mensagem = controller.cadastrar_produto(nome, marca, data, quantidade,preco)
+        mensagem = controller.editar_produto(id,nome, marca, data, quantidade,preco)
         return render_template('produto.html', mensagem=mensagem)
 
     return render_template('cadastro.html')
