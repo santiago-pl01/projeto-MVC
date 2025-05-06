@@ -38,10 +38,14 @@ def cadastro_produto():
         preco= int(request.form.get('preco'))
 
         mensagem = controller.cadastrar_produto(nome, marca, data, quantidade,preco)
-        return render_template('produto.html', mensagem=mensagem)
 
+        listar_produto= controller.listar_produto()
+        return render_template('produto.html', mensagem=mensagem, produtos= listar_produto)
+
+    listar_produto = controller.listar_produto()
     return render_template('produto.html')
 
+#editar usuario
 @app.route('/editar_usuario/<int:id>', methods=['GET','POST'])
 def editar_usuario():
 
@@ -51,9 +55,23 @@ def editar_usuario():
         senha = request.form.get('senha')
 
         mensagem = controller.cadastrar_usuario(nome, email, senha)
-        return render_template ('cadastro.html',mensagem=mensagem)
+
+        listar_usuario= controller.listar_cliente
+        return render_template ('cadastro.html',mensagem=mensagem, usuarios= listar_usuario)
     
     return render_template, ('cadastro.html')
+
+'''#listar usuario
+@app.route('/listar_cliente/<int:id>', methods=['GET', 'POST'])
+def listar_cliente():
+    lista_de_cliente = controller.listar_cliente()
+    return render_template('cadastro.html', produto = lista_de_cliente)
+
+@app.route('/listar_produto/<int:id>', methods=['GET', 'POST'])
+def listar_produto():
+    lista_de_produto = controller.listar_produto()
+    return render_template('produto.html', lista = lista_de_produto)'''
+
 #excluir usuario
 @app.route('/excluir_usuario/<int:id>', methods=['GET'])
 def excluir_usuario(id):
@@ -81,3 +99,4 @@ def editar_produto():
         return render_template('produto.html', mensagem=mensagem)
 
     return render_template('cadastro.html')
+
