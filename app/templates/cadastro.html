@@ -37,14 +37,16 @@
             </tr>
         </thead>
         <tbody id="listaProduto">
+            {% for usuario in usuarios %}
             <tr>
-                <td></td> 
-                <td></td>
+                <td>{{ usuario.nome }}</td>
+                <td>{{ usuario.email }}</td>
                 <td>
-                    <button onclick="Editar()">Editar</button>
-                    <button onclick="Excluir()">Excluir</button>
+                    <button onclick="editarUsuario('{{ usuario.id }}')">Editar</button>
+                    <button onclick="excluirUsuario('{{ usuario.id }}')">Excluir</button>
                 </td>
             </tr>
+            {% endfor %}
         </tbody>
     </table>
     

@@ -11,32 +11,46 @@
     <div class="card">
         <button onclick="window.history.back()" class="botao" style="margin-top: 20px;">Voltar</button>
         <h1 class="titulo-padrao">Cadastro de produto</h1>
+        
+        {% if mensagem %}
+        <p style="text-align:center; color: green;">{{ mensagem }}</p>
+    {% endif %}
 
-        <input type="text" id="adicionar produto" placeholder="Nome do produto">
-        <input type="text" id="Marca" placeholder="Marca">
-        <input type="number" id="Quantidade" placeholder="Quantidade" min="0">
-        <input type="text" id="Validade" placeholder="Validade do produto" onfocus="(this.type='date')" onblur="(this.type='text')">
-        <input type="text" id="Preço" placeholder="Preço" min="0 step="0.01"" oninput="if(this.value < 0) this.value = 0">
-        <button onclick="adicionar_produto()">adicionar produto</button>
+        <form method="POST" style="text-align:center;">
+            <input type="text" name="nome" placeholder="Nome do produto" required>
+            <input type="text" name="marca" placeholder="Marca" required>
+            <input type="date" name="data" placeholder="Data de validade" required>
+            <input type="number" name="quantidade" placeholder="Quantidade" min="0" required>
+            <input type="number" name="preco" placeholder="Preço" step="0.01" min="0" required>
+            <button type="submit">Adicionar Produto</button>
+        </form>
 
         <h2>LISTAS DE PRODUTO</h2>
         <table border="1">
             <thead>
                 <tr>
                     <th>Nome do produto</th>
+                    <th>marca</th>
+                    <th>quantidade</th>
+                    <th>validade</th>
                     <th>preço</th>
                     <th>alterações</th>
                 </tr>
             </thead>
             <tbody id="listaUsuarios">
+                {% for produto in produtos %}
                 <tr>
-                    <td></td> 
-                    <td></td>
+                    <td>{{ produto.nome }}</td>
+                    <td>{{ produto.marca }}</td>
+                    <td>{{ produto.quantidade }}</td>
+                    <td>{{ produto.validade }}</td>
+                    <td>R$ {{ "%.2f"|format(produto.preco) }}</td>
                     <td>
-                        <button onclick="Editar()">Editar</button>
-                        <button onclick="Excluir()">Excluir</button>
+                        <button onclick="editarProduto('{{ produto.id }}')">Editar</button>
+                        <button onclick="excluirProduto('{{ produto.id }}')">Excluir</button>
                     </td>
                 </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>
