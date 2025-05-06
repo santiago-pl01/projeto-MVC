@@ -42,9 +42,8 @@
                 <td>{{ usuario.nome }}</td>
                 <td>{{ usuario.email }}</td>
                 <td>
-                    <button onclick="editarUsuario('{{ usuario.id }}')">Editar</button>
-                    <button onclick="excluirUsuario('{{ usuario.id }}')">Excluir</button>
-                </td>
+                    <a href="{{ url_for('app.editar_usuario', id=usuario.id) }}"><button>Editar</button></a>
+                    <a href="{{ url_for('app.excluir_usuario', id=usuario.id) }}"><button>Excluir</button></a>
             </tr>
             {% endfor %}
         </tbody>

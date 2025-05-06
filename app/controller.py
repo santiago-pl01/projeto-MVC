@@ -12,15 +12,18 @@ def cadastrar_usuario(nome, email, senha):
     finally:
         del usuario  # Garante fechamento da conexão
 
+
+
 def editar_usuario(id, nome, email, senha):
     try:
         usuario = Usuario()
-        Usuario.editar(id, nome=nome, email=email, senha=senha)
+        usuario.editar(id, nome=nome, email=email, senha=senha)  
         return "Usuário editado com sucesso."
     except Exception as e:
         return f"Erro ao editar usuário: {e}"
     finally:
         del usuario
+
 
 def deletar_usuario(id):
     try:
