@@ -22,6 +22,7 @@ class ConexaoBanco:
         Estabelece a conexão com o banco de dados e cria o cursor.
         """
         self.conexao = sqlite3.connect(self.nome_db)
+        self.conexao.row_factory = sqlite3.Row
         self.cursor = self.conexao.cursor()
 
     def commit(self):
@@ -110,13 +111,14 @@ class TabelaBase:
         Lista todos os registros da tabela no console.
         """
         self.cursor.execute(f"SELECT * FROM {self.nome_tabela}")
+        
         registros = self.cursor.fetchall()
         if not registros:
             print(f"Nenhum {self.nome_tabela} cadastrado.")
             return 
         for linha in registros:
-           print(" | ".join([f"{campo}: {valor}" for campo, valor in zip(['id'] + list(self.campos.keys()), linha)]))
-
+           return registros
+           
 
     def existe(self, id_,):
         """
@@ -179,7 +181,7 @@ class TabelaBase:
         self.banco.fechar()
 
 
-class Cliente(TabelaBase):
+class Usuario(TabelaBase):
     """
     Classe que representa a tabela de usuários (clientes) no banco de dados.
     Herda os métodos da classe TabelaBase.

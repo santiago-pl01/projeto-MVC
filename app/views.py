@@ -15,7 +15,7 @@ def home():
 
 #cadastro do usuario
 @app.route('/cadastro', methods=['GET', 'POST'])
-def cadastro_cliente():
+def cadastro_usuario():
     if request.method == 'POST':
         nome = request.form.get('nome')
         email = request.form.get('email')
@@ -52,10 +52,10 @@ def excluir_usuario(id):
 
 
 #listar usuario
-@app.route('/listar_cliente', methods=['GET', 'POST'])
-def listar_cliente():
-    lista_de_cliente = controller.listar_cliente()
-    return render_template('cadastro.html', produto = lista_de_cliente)
+@app.route('/listar_usuario', methods=['GET', 'POST'])
+def listar_usuario():
+    lista_de_usuario = controller.listar_usuario()
+    return render_template('cadastro.html', usuarios = lista_de_usuario)
 
 
 
@@ -105,4 +105,3 @@ def editar_produto(id):
         return render_template('produto.html', mensagem=mensagem)
 
     return render_template('cadastro.html')
-
