@@ -78,23 +78,25 @@ def cadastro_produto():
         return render_template('produto.html', mensagem=mensagem, produtos = lista_produto)
         
     
-    return render_template('produto.html', produtos = lista_produto)
+    return render_template('produto.html', produtos= lista_produto)
 
 #listar produto
 @app.route('/listar_produto', methods=['GET', 'POST'])
 def listar_produto():
-    return render_template('produto.html')
+    lista_de_produto= controller.listar_produto()
+    return render_template('produto.html', produtos = lista_de_produto)
 
 #xcluir produto
 @app.route('/excluir/<int:id>', methods=['GET', 'POST'])
 def excluir_produto(id):
     controller.deletar_produto(id)
-    return render_template('produto.html')
+    lista_de_produto= controller.listar_produto()
+    return render_template('produto.html', produtos = lista_de_produto)
 
 #editar produto
 @app.route('/editar/<int:id>', methods=['GET', 'POST'])
 def editar_produto(id):
-    listar_produto= controller.listar_produto
+   
     if request.method == 'POST':
         nome = request.form.get('nome')
         marca = request.form.get('marca')
@@ -103,6 +105,8 @@ def editar_produto(id):
         preco= int(request.form.get('preco'))
 
         mensagem = controller.editar_produto(id,nome, marca, data, quantidade,preco)
-        return render_template('produto.html', mensagem=mensagem)
-
+        listar_produto= controller.listar_produto()
+        return render_template('produto.html', mensagem=mensagem, produtos= listar_produto)
+    
+    listar_produto= controller.listar_produto()
     return render_template('cadastro.html')
