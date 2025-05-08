@@ -37,13 +37,14 @@ def deletar_usuario(id):
 def listar_usuario():
     try:
         usuario = Usuario()
-        usuario = usuario.listar() 
-        return usuario
+        lista = usuario.listar()  # <-- nome diferente
+        return lista if lista else []  # garante que retorna uma lista
     except Exception as e:
         print(f"Erro ao listar usuários: {e}")
         return []
     finally:
         del usuario
+
 
 
 # ---------- PRODUTO ----------
